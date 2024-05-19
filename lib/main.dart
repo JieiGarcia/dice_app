@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,18 +18,36 @@ void main() {
 }
 
 class DiceP extends StatelessWidget {
+  int leftDiceNum = 5;
+
   @override
   Widget build(BuildContext context) {
+    leftDiceNum = 2;
     return Center(
       child: Row(
         children: [
           Expanded(
-            flex: 2,
-            child: Image.asset('images/dice1.png'),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextButton(
+                child: Image.asset('images/dice$leftDiceNum.png'),
+                onPressed: () {
+                  print('jay');
+                  leftDiceNum = 2;
+                },
+              ),
+            ),
           ),
           Expanded(
-            flex: 2,
-            child: Image.asset('images/dice2.png'),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextButton(
+                child: Image.asset('images/dice2.png'),
+                onPressed: () {
+                  print('hello');
+                },
+              ),
+            ),
           )
         ],
       ),
