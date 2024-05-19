@@ -17,12 +17,18 @@ void main() {
   );
 }
 
-class DiceP extends StatelessWidget {
-  int leftDiceNum = 5;
+class DiceP extends StatefulWidget {
+  const DiceP({super.key});
+
+  @override
+  State<DiceP> createState() => _DicePState();
+}
+
+class _DicePState extends State<DiceP> {
+  int leftDiceNum = 1;
 
   @override
   Widget build(BuildContext context) {
-    leftDiceNum = 2;
     return Center(
       child: Row(
         children: [
@@ -32,8 +38,10 @@ class DiceP extends StatelessWidget {
               child: TextButton(
                 child: Image.asset('images/dice$leftDiceNum.png'),
                 onPressed: () {
-                  print('jay');
-                  leftDiceNum = 2;
+                  setState(() {
+                    leftDiceNum = 5;
+                  });
+                  print(leftDiceNum);
                 },
               ),
             ),
@@ -42,9 +50,10 @@ class DiceP extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: TextButton(
-                child: Image.asset('images/dice2.png'),
+                child: Image.asset('images/dice1.png'),
                 onPressed: () {
-                  print('hello');
+                  leftDiceNum = 2;
+                  print(leftDiceNum);
                 },
               ),
             ),
