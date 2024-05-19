@@ -39,9 +39,9 @@ class _DicePState extends State<DiceP> {
                 child: Image.asset('images/dice$leftDiceNum.png'),
                 onPressed: () {
                   setState(() {
-                    leftDiceNum = 5;
+                    leftDiceNum = Random().nextInt(6) + 1;
+                    print(leftDiceNum);
                   });
-                  print(leftDiceNum);
                 },
               ),
             ),
