@@ -26,6 +26,14 @@ class DiceP extends StatefulWidget {
 
 class _DicePState extends State<DiceP> {
   int leftDiceNum = 1;
+  int rightDiceNum = 1;
+
+  void changeDiceFace() {
+    setState(() {
+      leftDiceNum = Random().nextInt(6) + 1;
+      rightDiceNum = Random().nextInt(6) + 1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +47,7 @@ class _DicePState extends State<DiceP> {
                 child: Image.asset('images/dice$leftDiceNum.png'),
                 onPressed: () {
                   setState(() {
-                    leftDiceNum = Random().nextInt(6) + 1;
-                    print(leftDiceNum);
+                    changeDiceFace();
                   });
                 },
               ),
@@ -50,10 +57,9 @@ class _DicePState extends State<DiceP> {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: TextButton(
-                child: Image.asset('images/dice1.png'),
+                child: Image.asset('images/dice$rightDiceNum.png'),
                 onPressed: () {
-                  leftDiceNum = 2;
-                  print(leftDiceNum);
+                  changeDiceFace();
                 },
               ),
             ),
